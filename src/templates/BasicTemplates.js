@@ -1,20 +1,20 @@
-import React from 'react'
+import React from "react";
 
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from "../feature/blog/components/Header";
+import Footer from "../feature/blog/components/Footer";
 
 function BasicTemplates(props) {
   return (
     <div className="BasicTemplates">
-      <section className={'HeaderSection'}>
+      <section className={"HeaderSection"}>
         <Header />
       </section>
-      <section className={'Body'}>{props.children}</section>
-      <section className={'FooterSection'}>
+      <section className={"Body"}>{props.children}</section>
+      <section className={"FooterSection"}>
         <Footer />
       </section>
     </div>
-  )
+  );
 }
 
-export default BasicTemplates
+export default BasicTemplates;
