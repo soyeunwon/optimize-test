@@ -24,37 +24,23 @@ function getParametersForUnsplash({ width, height, quality, format }) {
  * 파라미터로 넘어온 문자열에서 일부 특수문자를 제거하는 함수
  * (Markdown으로 된 문자열의 특수문자를 제거하기 위함)
  * */
-function removeSpecialCharacter(str) {
-  const removeCharacters = [
-    "#",
-    "_",
-    "*",
-    "~",
-    "&",
-    ";",
-    "!",
-    "[",
-    "]",
-    "`",
-    ">",
-    "\n",
-    "=",
-    "-",
-  ];
-  let _str = str;
-  let i = 0,
-    j = 0;
 
-  for (i = 0; i < removeCharacters.length; i++) {
-    j = 0;
-    while (j < _str.length) {
-      if (_str[j] === removeCharacters[i]) {
-        _str = _str.substring(0, j).concat(_str.substring(j + 1));
-        continue;
-      }
-      j++;
-    }
-  }
+/*
+* Minify JavaScript, reduce JS execution time 해결
+네트워크 > 성능 탭 > 해당 컴포넌트의 removeSpecialCharacter 함수가 오래 실행 됨.
+
+문제: for문과 while문 중첩으로 비효율적이게 문자를 제거하고 있음. 
+
+1. 특수 문자 효율적 제거하기!
+  - replace 함수 / 정규식 사용
+  - 마크다운 특수문자 제거 라이브러리 사용 remove-markdown
+2. 작업하는 양 줄이기
+  - 대략 작업해야 하는 양을 지정해서 해결.
+ */
+
+function removeSpecialCharacter(str) {
+  let _str = str.substring(0, 300);
+  _str = _str.replace(/[#_*~&;!\[\]`>\n=-]/g, "");
 
   return _str;
 }
