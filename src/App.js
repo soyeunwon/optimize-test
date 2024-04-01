@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
+import StatisticsPage from "./feature/statistics/pages/StatisticsPage";
 import "./App.css";
 
 const ListPage = lazy(() => import("./feature/blog/pages/ListPage"));
@@ -10,9 +11,8 @@ function App() {
     <div className="App">
       <Suspense fallback={<div>로딩 중...</div>}>
         <Switch>
-          <Route path="/" exact>
-            <h1>optimize test</h1>
-          </Route>
+          <Route path="/" component={StatisticsPage} exact />
+
           <Route path="/blog" component={ListPage} exact />
           <Route path="/blog/view/:id" component={ViewPage} exact />
         </Switch>
