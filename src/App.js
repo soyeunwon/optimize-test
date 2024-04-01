@@ -12,7 +12,6 @@ function App() {
       <Suspense fallback={<div>로딩 중...</div>}>
         <Switch>
           <Route path="/" component={StatisticsPage} exact />
-
           <Route path="/blog" component={ListPage} exact />
           <Route path="/blog/view/:id" component={ViewPage} exact />
         </Switch>
